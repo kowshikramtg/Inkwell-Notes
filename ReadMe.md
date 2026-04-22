@@ -1,6 +1,6 @@
 <div align="center">
 
-# My Heading
+# InkWell - Notes taking Application
 
 </div>
 
