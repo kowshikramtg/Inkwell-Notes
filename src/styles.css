@@ -1,0 +1,85 @@
+/* ─────────────────────────────────────────────
+   INKWELL — Global Design Tokens
+   Palette: near-black · soft violet · warm amber
+───────────────────────────────────────────── */
+
+@import url('https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,300&display=swap');
+
+:root {
+  --ink-900: #0f0e11;
+  --ink-800: #1a1820;
+  --ink-700: #26232e;
+  --ink-600: #37333f;
+  --ink-400: #7e7990;
+  --ink-300: #a09aae;
+  --ink-200: #c8c3d4;
+  --ink-100: #edeaf4;
+  --ink-50:  #f8f6fd;
+
+  --violet:       #7c5cbf;
+  --violet-dim:   #9d7fd9;
+  --violet-light: #e8e0f5;
+  --violet-subtle:#f0ebfc;
+
+  --amber:        #c8972a;
+  --amber-light:  #fef3cd;
+
+  --bg-primary:   #faf9fd;
+  --bg-secondary: #f1eef9;
+  --bg-card:      #ffffff;
+  --border:       #e5e0f0;
+  --border-strong:#cec6e6;
+  --shadow:       rgba(100, 80, 160, 0.08);
+  --overlay-bg:   rgba(15, 14, 17, 0.55);
+
+  --text-primary:   var(--ink-900);
+  --text-secondary: var(--ink-600);
+  --text-muted:     var(--ink-400);
+
+  --accent:       var(--violet);
+  --accent-dim:   var(--violet-dim);
+  --accent-subtle:rgba(124, 92, 191, 0.12);
+
+  --tag-idea-bg:   var(--amber-light);
+  --tag-idea-text: #7a5200;
+
+  --danger:    #d93838;
+  --danger-bg: #fef1f1;
+
+  --font-display: 'DM Serif Display', Georgia, serif;
+  --font-body:    'DM Sans', system-ui, sans-serif;
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-size: 16px;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  font-family: var(--font-body);
+  background: var(--bg-primary);
+  color: var(--text-primary);
+  min-height: 100vh;
+}
+
+::-webkit-scrollbar { width: 6px; height: 6px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: var(--border-strong); border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: var(--ink-300); }
+
+:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+
+::selection {
+  background: var(--violet-light);
+  color: var(--ink-900);
+}

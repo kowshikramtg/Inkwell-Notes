@@ -1,0 +1,57 @@
+<div class="editor-overlay" *ngIf="isOpen" (click)="close()">
+  <div class="editor-panel" (click)="$event.stopPropagation()">
+
+    <div class="editor-topbar">
+      <div class="editor-tags" *ngIf="tags.length > 0">
+        <span class="tag" *ngFor="let tag of tags" [attr.data-tag]="tag">{{ tag }}</span>
+      </div>
+      <div class="editor-status">
+        <span class="word-count">{{ wordCount }} {{ wordCount === 1 ? 'word' : 'words' }}</span>
+        <span class="save-indicator" [class.saving]="!isSaved">
+          <svg viewBox="0 0 16 16" fill="none" width="12" height="12">
+            <circle cx="8" cy="8" r="6" stroke="currentColor" stroke-width="1.5" *ngIf="isSaved"/>
+            <path d="M4 8l2.5 2.5L12 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" *ngIf="isSaved"/>
+            <circle cx="8" cy="8" r="6" stroke="currentColor" stroke-width="1.5" stroke-dasharray="4 2" *ngIf="!isSaved"/>
+          </svg>
+          {{ isSaved ? 'Saved' : 'Saving…' }}
+        </span>
+      </div>
+      <button class="close-btn" (click)="close()" title="Close (Esc)">
+        <svg viewBox="0 0 20 20" fill="none">
+          <path d="M5 5l10 10M15 5L5 15" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+        </svg>
+      </button>
+    </div>
+
+    <div class="editor-body">
+      <textarea
+        #titleInput
+        class="editor-title"
+        placeholder="Note title…"
+        [(ngModel)]="localTitle"
+        (ngModelChange)="onTitleChange()"
+        (input)="autoResize($any($event.target))"
+        rows="1"
+        spellcheck="false"
+      ></textarea>
+
+      <div class="editor-divider"></div>
+
+      <textarea
+        #contentInput
+        class="editor-content"
+        placeholder="Start writing…"
+        [(ngModel)]="localContent"
+        (ngModelChange)="onContentChange()"
+        (input)="autoResize($any($event.target))"
+        rows="8"
+        spellcheck="true"
+      ></textarea>
+    </div>
+
+    <div class="editor-hint">
+      <kbd>Esc</kbd> to close &nbsp;·&nbsp; auto-saves as you type
+    </div>
+
+  </div>
+</div>

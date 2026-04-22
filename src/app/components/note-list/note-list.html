@@ -1,0 +1,43 @@
+<div class="list-container">
+
+  <!-- Empty state -->
+  <div class="empty-state" *ngIf="isEmpty">
+    <div class="empty-icon">✦</div>
+    <h2 class="empty-title">{{ isSearching ? 'No notes found' : 'Your canvas is empty' }}</h2>
+    <p class="empty-sub">
+      {{ isSearching
+        ? 'Try a different search term.'
+        : 'Press N or click "+ New note" to begin.' }}
+    </p>
+  </div>
+
+  <!-- Pinned section -->
+  <section *ngIf="pinnedNotes.length > 0" class="notes-section">
+    <h2 class="section-label">
+      <svg viewBox="0 0 20 20" fill="currentColor" width="12" height="12">
+        <path d="M10 2l1.8 5.5H18l-4.9 3.6 1.9 5.8L10 13.4l-5 3.5 1.9-5.8L2 7.5h6.2L10 2z"/>
+      </svg>
+      Pinned
+    </h2>
+    <div class="notes-grid">
+      <app-note-card
+        *ngFor="let note of pinnedNotes; trackBy: trackById"
+        [note]="note"
+        (deleted)="deleteNote($event)"
+      />
+    </div>
+  </section>
+
+  <!-- All / recent notes -->
+  <section *ngIf="unpinnedNotes.length > 0" class="notes-section">
+    <h2 class="section-label" *ngIf="pinnedNotes.length > 0">All notes</h2>
+    <div class="notes-grid">
+      <app-note-card
+        *ngFor="let note of unpinnedNotes; trackBy: trackById"
+        [note]="note"
+        (deleted)="deleteNote($event)"
+      />
+    </div>
+  </section>
+
+</div>
