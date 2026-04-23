@@ -2,7 +2,7 @@
 
 # Inkwell Notes
 
-A modern, efficient, and user-friendly note-taking application designed to help users capture, organize, and manage their thoughts seamlessly.
+A modern, efficient, and user-friendly note-taking application.
 
 </div>
 
